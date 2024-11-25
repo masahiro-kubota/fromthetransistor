@@ -19,5 +19,9 @@ VerilogはFPGAの回路を設計するために使用されるハードウェア
 Verilatorは、フリーでオープンソースのVerilogのシミュレーションシステム。このようなシミュレーションシステムはほとんどが有償らしい。
 テストベンチ系のコードはサポートされていないらしい。
 
+```
+sudo apt insall verilator
+```
+
 ＜参考サイト＞
 - https://msyksphinz.hatenablog.com/entry/2020/05/06/040000
