@@ -1,13 +1,13 @@
 module up_down_counter
   (
-    input logic clk,
+    input logic clk, // clk、reset_n、enはON OFFみたいなもん。clkはクロックだからMHz単位でON OFFが行われる。
     input logic reset_n,
     input logic up,
     input logic down,
-    output logic [3:0] cnt
+    output logic [3:0] cnt // [3:0]は4bitの信号を表す。この時点では何進数かは決めなくていい。
   );
 
-always_ff @(posedge clk, negedge reset_n) begin
+always_ff @(posedge clk, negedge reset_n) begin // posedge clk, negedge reset_nは回路の動作開始タイミングを定義する文
   if (!reset_n) begin
     cnt <=4'd0;
   end 
