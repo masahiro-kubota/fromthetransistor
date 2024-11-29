@@ -18,10 +18,19 @@ int main(int argc, char** argv) {
   dut->reset_n = 1;
   dut->eval();
 
-  while (time_counter < 3) {
-    dut->clk = !dut->clk;
-    dut->up = 1;
-    dut->down = 0;
+  while (time_counter < 100) {
+    if ((time_counter % 5) == 0){
+      dut->clk = !dut->clk;
+    }
+    if ((time_counter % 30) == 0){
+      // 3NクロックサイクルごとにDOWNカウント
+      dut->up = 0;
+      dut->down = 1;
+    }else if (((time_counter % 30) == 10) || ((time_counter % 30) == 20)){
+      // 3N+1, 3N+2 クロックサイクルごとにUPカウント
+      dut->up = 1;
+      dut->down = 0;
+    }
     dut->eval();
     // デバッグ出力
     std::cout << "--------------------" << std::endl;

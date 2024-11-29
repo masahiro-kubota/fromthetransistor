@@ -19,19 +19,33 @@ FPGA(Field Programmable Gate Array)は購入後にユーザーが自由にデジ
 VerilogはFPGAの回路を設計するために使用されるハードウェア記述言語(HDL)の１つ。ハードウェアの並列性や回路の階層構造も自由に記述することができる。
 もう１つ主要なHDLとしてVHDLがあるが、Verilogの方が比較的シンプルな文法で、C言語に近い記述ができる。
 
-＜参考図書＞
-- https://www.amazon.co.jp/dp/4789833968/?tag=a8-affi-303850-22&a8=T-.yc-WAKvkrvUUAYMkXAU.iG.Cn8oh59MlLWRlRULOAKv.PkvbiNvb4YoCXbXhl_Lwo5z.4_-.yVs00000009884001
 
 ### Verilator
 
 Verilatorは、フリーでオープンソースのVerilogのシミュレーションシステム。このようなシミュレーションシステムはほとんどが有償らしい。
 テストベンチ系のコードはサポートされていないらしい。
 ```
-sudo apt insall verilator
+$ sudo apt insall verilator
 ```
 
+DUTが記述された`counter_updown.cpp`とテストベンチが記述された`tb_counter_updown.cpp`で構成されるupとdownスイッチを持つ4bitカウンターのサンプルプログラム。
+
 ```
-cd section1
-make
-./obj_dir/Vcounter_updown
+$ cd section1
+$ make
+$ ./obj_dir/Vcounter_updown
+--------------------
+Time counter = 0
+Clock = 1
+Counter Value = 15
+--------------------
+Time counter = 1
+.
+.
+.
+--------------------
+Time counter = 99
+Clock = 0
+Counter Value = 2
+Final Counter  Value = 2
 ```
